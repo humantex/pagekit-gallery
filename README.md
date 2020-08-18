@@ -1,7 +1,7 @@
 # Gallery Extension for Pagekit CMS
-[![StyleCI](https://styleci.io/repos/65122978/shield?branch=master)](https://styleci.io/repos/65122978) [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.me/himpler)
+[![StyleCI](https://styleci.io/repos/65122978/shield?branch=master)](https://styleci.io/repos/65122978)
 
-gallery-extension for https://pagekit.com/ 
+gallery-extension for https://pagekit.com/
 
 - create galleries with your pagekit cms
 - auto image resizing and auto thumbnails
