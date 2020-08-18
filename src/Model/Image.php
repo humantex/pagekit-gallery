@@ -9,7 +9,8 @@ use Pagekit\System\Model\DataModelTrait;
  */
 class Image implements \JsonSerializable
 {
-    use DataModelTrait, ImageModelTrait;
+    use DataModelTrait;
+    use ImageModelTrait;
 
     /** @Column(type="integer") @Id */
     public $id;
