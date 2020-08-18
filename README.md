@@ -1,5 +1,4 @@
 # Gallery Extension for Pagekit CMS
-[![StyleCI](https://styleci.io/repos/65122978/shield?branch=master)](https://styleci.io/repos/65122978)
 
 gallery-extension for https://pagekit.com/ 
 
