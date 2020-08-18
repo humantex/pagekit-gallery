@@ -4,20 +4,20 @@
      data-uk-slideshow="">
     <h3 class="uk-margin-remove"><?= $gallery->title ?></h3>
     <ul class="uk-slideshow">
-        <?php foreach ($images as $image): ?>
+        <?php foreach ($images as $image) { ?>
         <li>
             <img src="<?= $view->url()->getStatic($image->getImage()) ?>" alt="<?=$image->title?>" />
         </li>
-        <?php endforeach ?>
+        <?php } ?>
     </ul>
-    <?php if (count($images) > 1): ?>
+    <?php if (count($images) > 1) { ?>
     <a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
     <a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>
-    <?php endif ?>
-    <?php if ($gallery->description) : ?>
+    <?php } ?>
+    <?php if ($gallery->description) { ?>
         <p class="uk-margin-remove"><?= $gallery->description ?></p>
-    <?php endif ?>
-    <?php if ($attributes['showLink']) : ?>
+    <?php } ?>
+    <?php if ($attributes['showLink']) { ?>
         <a href="<?= $view->url('@gallery/id', ['id' => $gallery->id]) ?>"><?= __('more') ?> <i class="uk-icon uk-icon-arrow-right"></i></a>
-    <?php endif ?>
+    <?php } ?>
 </div>
