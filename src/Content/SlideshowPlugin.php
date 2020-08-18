@@ -25,8 +25,10 @@ class SlideshowPlugin implements EventSubscriberInterface
             foreach ($matches[1] as $key => $match) {
                 preg_match_all($pattern2, $match, $attributes, PREG_PATTERN_ORDER);
 
-                $attributes = array_merge(array_fill_keys(['id', 'showLink', 'limit'], ''),
-                array_combine($attributes[1], $attributes[2]));
+                $attributes = array_merge(
+                    array_fill_keys(['id', 'showLink', 'limit'], ''),
+                    array_combine($attributes[1], $attributes[2])
+                );
                 $attributes['showLink'] = ($attributes['showLink'] === 'true') ? true : false;
 
                 $gallery = Gallery::find($attributes['id']);
