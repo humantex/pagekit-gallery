@@ -15,18 +15,18 @@ class GalleryController
     public function galleryAction($filter = null, $page = null)
     {
         return [
-          '$view' => [
-              'title' => __('Galleries'),
-              'name'  => 'gallery:views/admin/gallery-index.php',
-          ],
-          '$data' => [
-              'statuses'   => Gallery::getStatuses(),
-              'authors'    => Gallery::getAuthors(),
-              'canEditAll' => App::user()->hasAccess('gallery: manage all galleries'),
-              'config'     => [
-                  'filter' => (object) $filter,
-                  'page'   => $page,
-              ],
+            '$view' => [
+                'title' => __('Galleries'),
+                'name'  => 'gallery:views/admin/gallery-index.php',
+            ],
+            '$data' => [
+                'statuses'   => Gallery::getStatuses(),
+                'authors'    => Gallery::getAuthors(),
+                'canEditAll' => App::user()->hasAccess('gallery: manage all galleries'),
+                'config'     => [
+                    'filter' => (object) $filter,
+                    'page'   => $page,
+                ],
           ],
 
       ];
@@ -41,34 +41,34 @@ class GalleryController
     {
         try {
             if (!$gallery = Gallery::where(compact('id'))->related('user', 'images')->first()) {
-                if ($id) {
-                    App::abort(404, __('Invalid gallery id'));
-                }
+                  if ($id) {
+                      App::abort(404, __('Invalid gallery id'));
+                  }
 
-                $gallery = Gallery::create([
-                    'user_id' => App::user()->id,
-                    'date'    => new \DateTime(),
-                    'status'  => Gallery::STATUS_DRAFT,
-                ]);
+                  $gallery = Gallery::create([
+                      'user_id' => App::user()->id,
+                      'date'    => new \DateTime(),
+                      'status'  => Gallery::STATUS_DRAFT,
+                  ]);
             }
 
             $user = App::user();
             if (!$user->hasAccess('gallery: manage all galleries') && $gallery->user_id !== $user->id) {
-                App::abort(403, __('Insufficient User Rights.'));
+                  App::abort(403, __('Insufficient User Rights.'));
             }
 
             $roles = App::db()->createQueryBuilder()
-                ->from('@system_role')
-                ->where(['id' => Role::ROLE_ADMINISTRATOR])
-                ->whereInSet('permissions', ['gallery: manage all galleries', 'gallery: manage own galleries'], false, 'OR')
-                ->execute('id')
-                ->fetchAll(\PDO::FETCH_COLUMN);
+                  ->from('@system_role')
+                  ->where(['id' => Role::ROLE_ADMINISTRATOR])
+                  ->whereInSet('permissions', ['gallery: manage all galleries', 'gallery: manage own galleries'], false, 'OR')
+                  ->execute('id')
+                  ->fetchAll(\PDO::FETCH_COLUMN);
 
             $authors = App::db()->createQueryBuilder()
-                ->from('@system_user')
-                ->whereInSet('roles', $roles)
-                ->execute('id, username')
-                ->fetchAll();
+                  ->from('@system_user')
+                  ->whereInSet('roles', $roles)
+                  ->execute('id, username')
+                  ->fetchAll();
 
             return [
                 '$view' => [
