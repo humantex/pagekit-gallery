@@ -12,7 +12,9 @@ use Pagekit\User\Model\User;
  */
 class Gallery implements \JsonSerializable
 {
-    use AccessModelTrait, DataModelTrait, GalleryModelTrait;
+    use AccessModelTrait;
+    use DataModelTrait;
+    use GalleryModelTrait;
 
     /* Gallery draft status. */
     const STATUS_DRAFT = 0;
