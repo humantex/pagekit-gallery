@@ -1,6 +1,8 @@
 # Gallery Extension for Pagekit CMS
 [![StyleCI](https://styleci.io/repos/65122978/shield?branch=master)](https://styleci.io/repos/65122978)
 
+### NOTE: pagekit-gallery is feature-locked
+
 gallery-extension for https://pagekit.com/
 
 - create galleries with your pagekit cms
@@ -13,4 +15,5 @@ gallery-extension for https://pagekit.com/
 - PHP GD extension
 
 thanks to pierzo for polish translation
+
 thanks to kroozo for hungarian translation
